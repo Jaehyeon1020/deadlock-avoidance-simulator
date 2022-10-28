@@ -19,6 +19,8 @@ input.txt 파일은 다음과 같은 내용을 담고 있다 :
 5. input.txt 파일을 닫고 프로그램을 종료한다.
 
 ## input.txt
+* 1st line : ($프로세스의 총 개수) ($자원 종류의 총 개수) ($자원 R<sub>1</sub>의 unit 개수) ($자원 R<sub>2</sub>의 unit 개수) ... ($자원 R<sub>n</sub>의 unit 개수)
+* < 2nd line : Max-claim matrix, Current allocation matrix(행은 프로세스, 열은 자원을 의미)
 
 ## 실행 결과의 예
 ### input.txt(입력)
@@ -37,3 +39,25 @@ input.txt 파일은 다음과 같은 내용을 담고 있다 :
 State: SAFE
 Safe sequence: Process 1 -> Process 2 -> Process 3
 ```
+Remaining Unit은 (7개, 4개, 5개)이며, Remaining Unit을 할당하여 Process 1 -> Process 2 -> Process 3의 순서로 항상 실행가능하다.   
+
+### input.txt(입력)
+```
+4 3 9 3 4
+5 2 3
+1 2 2
+7 3 3
+9 1 0
+1 0 1
+0 1 1
+5 2 1
+2 0 0
+```
+
+### 실행 결과(출력)
+```
+State: UNSAFE
+Reason: Process 1, 2, 3, 4 can occur deadlock
+```
+Remaining Unit은 (1개, 0개, 1개)이며, Remaining Unit을 할당하여 어떤 프로세스도 실행가능하지 않다.
+
